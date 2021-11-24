@@ -22,4 +22,21 @@ router.get("/:id", async (req, res) =>{
     }
 })
 
+
+// post movies
+router.post("/", async (req, res) =>{
+    const newMovie = new Movies(req.body)
+    try {
+        const savedPost = await newMovie.save()
+        res.status(200).json(savedPost)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}) 
+
+
+
+
+
+
 module.exports = router;
